@@ -12,4 +12,4 @@ scrape_configs:
     metrics_path: '/actuator/prometheus'
     scrape_interval: 5s
     static_configs:
-      - targets: ['192.168.0.115:8080'] #Ver IPV4 com comando ipconfif no Windows ou ifconfig no Linux
+      - targets: ['192.168.0.115:8080'] #Ver IPV4 com comando ipconfif no Windows ou ifconfig no Linu
