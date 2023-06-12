@@ -44,13 +44,16 @@
             <artifactId>lombok</artifactId>
             <version>1.18.22</version>
         </dependency>
+
     </dependencies>
-    git
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludeDevtools>false</excludeDevtools>
+                </configuration>
             </plugin>
         </plugins>
     </build>

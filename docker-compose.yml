@@ -1,0 +1,31 @@
+#Versão do Docker
+version: '3.3'
+
+#Rede que será utilizada
+networks:
+  edson-network:
+    driver: bridge
+
+#Onde ficarão os dados, no caso no disco para não perder quando a app reuniciar
+volumes:
+  prometheus_data:
+  grafana_data:
+
+#Serviços que irão executar no Docker
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    networks:
+      - edson-network
+    ports:
+      - 9090:9090
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - 3000:3000
+    networks:
+      - edson-network
