@@ -1,5 +1,6 @@
-package com.example.MonitoringSpringDemoProject;
+package com.example.MonitoringSpringDemoProject.metrics;
 
+import com.example.MonitoringSpringDemoProject.metrics.DemoMetrics;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 

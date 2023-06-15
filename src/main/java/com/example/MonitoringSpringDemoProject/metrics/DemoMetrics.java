@@ -1,4 +1,4 @@
-package com.example.MonitoringSpringDemoProject;
+package com.example.MonitoringSpringDemoProject.metrics;
 
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.MeterRegistry;
