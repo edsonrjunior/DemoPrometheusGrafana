@@ -7,13 +7,8 @@ import lombok.Data;
 @Data
 public class CreateClienteDTO {
 
-    @NotNull
-    private Integer id;
-
-    @NotBlank
-    private String nome;
-
-    @NotBlank
-    private String telefone;
+    private @NotNull Integer id;
+    private @NotBlank String nome;
+    private @NotBlank String telefone;
 
 }
