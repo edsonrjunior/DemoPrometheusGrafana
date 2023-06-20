@@ -1,14 +1,11 @@
 package com.example.MonitoringSpringDemoProject.controller;
 
-import com.example.MonitoringSpringDemoProject.domain.Cliente;
 import com.example.MonitoringSpringDemoProject.dto.ClienteDTO;
 import com.example.MonitoringSpringDemoProject.dto.CreateClienteDTO;
 import com.example.MonitoringSpringDemoProject.service.ClienteService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping({"clientes"})
@@ -33,7 +30,7 @@ public class AlunoController {
 
     @PostMapping(consumes = {"application/json"}, produces = {"application/json"})
     @ResponseStatus(HttpStatus.CREATED)
-    public ClienteDTO create(CreateClienteDTO createClienteDTO) {
+    public ClienteDTO create(@RequestBody @Valid CreateClienteDTO createClienteDTO) {
         return this.clienteService.create(createClienteDTO);
     }
 
