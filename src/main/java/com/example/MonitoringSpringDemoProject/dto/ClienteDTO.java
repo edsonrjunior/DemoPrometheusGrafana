@@ -12,13 +12,9 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class ClienteDTO implements Serializable {
 
-
     private Integer id;
-
     private String nome;
-
     private String telefone;
-
 
     public ClienteDTO(Cliente cliente) {
         this.id = cliente.getId();
