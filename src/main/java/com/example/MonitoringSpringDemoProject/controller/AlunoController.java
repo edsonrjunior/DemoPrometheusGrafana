@@ -10,6 +10,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -22,23 +23,32 @@ public class AlunoController {
         this.clienteService = clienteService;
     }
 
-    @GetMapping(value = {"{id}"}, produces = {"application/json"})
+    @GetMapping(value = "{id}", produces = "application/json")
     public ClienteDTO findById(@PathVariable Integer id) {
         return clienteService.findById(id);
     }
 
-//    @GetMapping(produces = {"application/json"})
-//    public List<ClienteDTO> getAll(@RequestParam(required = false, value = "nome") String nome) {
-//        return clienteService.findAll(nome);
-//    }
-
-
-    @PostMapping(consumes = {"application/json"}, produces = {"application/json"})
+    @PostMapping(consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public ClienteDTO create(@RequestBody @Valid CreateClienteDTO createClienteDTO) {
         return this.clienteService.create(createClienteDTO);
     }
 
+    @DeleteMapping(value = "{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable @Valid int id) {
+        this.clienteService.delete(id);
+    }
+
+    @PutMapping(value = "{id}", produces = "application/json", consumes = "application/json")
+    public ClienteDTO update(@PathVariable Integer id, @RequestBody CreateClienteDTO createClienteDTO) {
+        return this.clienteService.update(id, createClienteDTO);
+    }
+
+    @GetMapping(produces = "application/json")
+    public List<ClienteDTO> getAll() {
+        return clienteService.findAll();
+    }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler({MethodArgumentNotValidException.class})

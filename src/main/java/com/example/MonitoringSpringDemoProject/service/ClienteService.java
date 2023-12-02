@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface ClienteService {
 
-    List<ClienteDTO> findAll(String nome);
+    List<ClienteDTO> findAll();
     ClienteDTO findById(Integer id);
 
     ClienteDTO create( CreateClienteDTO createClienteDTO);
