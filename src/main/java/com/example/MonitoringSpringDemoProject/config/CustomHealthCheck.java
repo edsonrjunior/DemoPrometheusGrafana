@@ -1,4 +1,4 @@
-package com.example.MonitoringSpringDemoProject.metrics;
+package com.example.MonitoringSpringDemoProject.config;
 
 import lombok.AllArgsConstructor;
 import org.springframework.boot.actuate.health.AbstractHealthIndicator;
