@@ -2,6 +2,7 @@ package com.example.MonitoringSpringDemoProject.controller;
 
 import com.example.MonitoringSpringDemoProject.dto.ClienteDTO;
 import com.example.MonitoringSpringDemoProject.dto.CreateClienteDTO;
+import com.example.MonitoringSpringDemoProject.metrics.MetricsService;
 import com.example.MonitoringSpringDemoProject.service.ClienteService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -18,9 +19,11 @@ import java.util.Map;
 public class AlunoController {
 
     private final ClienteService clienteService;
+    private final MetricsService metricsService;
 
-    public AlunoController(ClienteService clienteService) {
+    public AlunoController(ClienteService clienteService, MetricsService metricsService) {
         this.clienteService = clienteService;
+        this.metricsService = metricsService;
     }
 
     @GetMapping(value = "{id}", produces = "application/json")
@@ -31,7 +34,9 @@ public class AlunoController {
     @PostMapping(consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public ClienteDTO create(@RequestBody @Valid CreateClienteDTO createClienteDTO) {
-        return this.clienteService.create(createClienteDTO);
+        ClienteDTO clienteDTO = clienteService.create(createClienteDTO);
+        this.metricsService.incrementPostRequests();
+        return clienteDTO;
     }
 
     @DeleteMapping(value = "{id}")
