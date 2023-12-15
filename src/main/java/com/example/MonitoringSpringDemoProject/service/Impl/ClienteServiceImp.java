@@ -3,10 +3,10 @@ package com.example.MonitoringSpringDemoProject.service.Impl;
 import com.example.MonitoringSpringDemoProject.domain.Cliente;
 import com.example.MonitoringSpringDemoProject.dto.ClienteDTO;
 import com.example.MonitoringSpringDemoProject.dto.CreateClienteDTO;
+import com.example.MonitoringSpringDemoProject.exception.DbException;
 import com.example.MonitoringSpringDemoProject.repository.ClienteRepository;
 import com.example.MonitoringSpringDemoProject.service.ClienteService;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -41,9 +41,17 @@ public class ClienteServiceImp implements ClienteService {
 
     @Override
     public ClienteDTO create(CreateClienteDTO createClienteDTO) {
-        Cliente cliente = new Cliente(createClienteDTO);
-        log.info("Cliente {} salvo", cliente.getId());
-        return new ClienteDTO(clienteRepository.save(cliente));
+        var cliente = new Cliente(createClienteDTO);
+        var clienteDTO = new ClienteDTO(cliente);
+        try {
+            clienteRepository.save(cliente);
+            log.info("Cliente {} salvo ", clienteDTO.getId());
+            return clienteDTO;
+        } catch (Exception e) {
+            log.error("Erro ao salvar cliente no banco. Erro: {}", e.getMessage());
+            throw new DbException(e.getMessage());
+        }
+
     }
 
     @Override

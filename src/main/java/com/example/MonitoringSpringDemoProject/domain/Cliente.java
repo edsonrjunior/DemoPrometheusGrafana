@@ -1,10 +1,16 @@
 package com.example.MonitoringSpringDemoProject.domain;
 
 import com.example.MonitoringSpringDemoProject.dto.CreateClienteDTO;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 
 @Entity
@@ -14,6 +20,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Cliente {
 
+    //Classe que representa a entidade no banco de dados
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -22,12 +30,16 @@ public class Cliente {
     private String nome;
 
     @Column
+    private LocalDate dataNascimento;
+
+    @Column
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private String telefone;
 
     public Cliente(CreateClienteDTO createClienteDTO) {
         this.setId(createClienteDTO.getId());
         this.setNome(createClienteDTO.getNome());
+        this.setDataNascimento(createClienteDTO.getDataNascimento());
         this.setTelefone(createClienteDTO.getTelefone());
     }
-
 }
