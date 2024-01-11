@@ -51,7 +51,6 @@ public class ClienteServiceImp implements ClienteService {
             log.error("Erro ao salvar cliente no banco. Erro: {}", e.getMessage());
             throw new DbException(e.getMessage());
         }
-
     }
 
     @Override

@@ -30,15 +30,18 @@ public class Cliente {
     private String nome;
 
     @Column
+    private String sobrenome;
+
+    @Column
     private LocalDate dataNascimento;
 
     @Column
-    @JsonFormat(pattern = "yyyy-MM-dd")
     private String telefone;
 
     public Cliente(CreateClienteDTO createClienteDTO) {
         this.setId(createClienteDTO.getId());
         this.setNome(createClienteDTO.getNome());
+        this.setSobrenome(createClienteDTO.getSobrenome());
         this.setDataNascimento(createClienteDTO.getDataNascimento());
         this.setTelefone(createClienteDTO.getTelefone());
     }

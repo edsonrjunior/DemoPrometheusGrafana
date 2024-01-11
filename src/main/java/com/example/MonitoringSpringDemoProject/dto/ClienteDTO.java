@@ -15,16 +15,18 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class ClienteDTO implements Serializable {
 
-    //Classe DTO
+    //Classe DTO - Define quais informações serao retornadas
 
     private Integer id;
     private String nome;
+    private String sobrenome;
     private LocalDate dataNascimento;
     private String telefone;
 
     public ClienteDTO(Cliente cliente) {
         this.id = cliente.getId();
         this.nome = cliente.getNome();
+        this.sobrenome = cliente.getSobrenome();
         this.dataNascimento = cliente.getDataNascimento();
         this.telefone = cliente.getTelefone();
     }

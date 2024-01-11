@@ -1,5 +1,6 @@
 package com.example.MonitoringSpringDemoProject.service;
 
+import com.example.MonitoringSpringDemoProject.domain.Cliente;
 import com.example.MonitoringSpringDemoProject.dto.ClienteDTO;
 import com.example.MonitoringSpringDemoProject.dto.CreateClienteDTO;
 
@@ -16,4 +17,6 @@ public interface ClienteService {
     ClienteDTO update(Integer id, CreateClienteDTO createClienteDTO);
 
     void delete(Integer id);
+
+
 }

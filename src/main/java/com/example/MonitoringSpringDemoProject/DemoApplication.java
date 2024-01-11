@@ -22,8 +22,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 						name = "licence",
 						url = "edsonkjk"
 				)
-
-
 		)
 )
 public class DemoApplication {

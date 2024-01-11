@@ -18,6 +18,9 @@ public class CreateClienteDTO {
     @NotBlank(message = "O Nome não pode ser vazio")
     private String nome;
 
+    @NotBlank(message = "O Sobrenome não pode ser vazio")
+    private String sobrenome;
+
     // @Pattern(regexp = "\\d{4}-\\d{2}-\\d{2}", message = "A data de nascimento deve estar no formato yyyy-MM-dd")
     private LocalDate dataNascimento;
 

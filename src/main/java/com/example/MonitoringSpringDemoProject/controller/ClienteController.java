@@ -1,5 +1,6 @@
 package com.example.MonitoringSpringDemoProject.controller;
 
+import com.example.MonitoringSpringDemoProject.domain.Cliente;
 import com.example.MonitoringSpringDemoProject.dto.ClienteDTO;
 import com.example.MonitoringSpringDemoProject.dto.CreateClienteDTO;
 import com.example.MonitoringSpringDemoProject.metrics.MetricsService;
@@ -16,12 +17,12 @@ import java.util.Map;
 
 @RestController
 @RequestMapping({"clientes"})
-public class AlunoController {
+public class ClienteController {
 
     private final ClienteService clienteService;
     private final MetricsService metricsService;
 
-    public AlunoController(ClienteService clienteService, MetricsService metricsService) {
+    public ClienteController(ClienteService clienteService, MetricsService metricsService) {
         this.clienteService = clienteService;
         this.metricsService = metricsService;
     }
@@ -54,6 +55,8 @@ public class AlunoController {
     public List<ClienteDTO> getAll() {
         return clienteService.findAll();
     }
+
+
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler({MethodArgumentNotValidException.class})
